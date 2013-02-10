@@ -1,0 +1,67 @@
+@faceColor: @black;
+@lineColor: @white;
+@tlColor: @yellow;
+
+.setTransform(@rx, @ry, @rz, @x, @y, @z) {
+  -webkit-transform: rotateX(@rx) rotateY(@ry) rotateZ(@rz) translate3d(@x, @y, @z);
+     -moz-transform: rotateX(@rx) rotateY(@ry) rotateZ(@rz) translate3d(@x, @y, @z);
+       -o-transform: rotateX(@rx) rotateY(@ry) rotateZ(@rz) translate3d(@x, @y, @z);
+          transform: rotateX(@rx) rotateY(@ry) rotateZ(@rz) translate3d(@x, @y, @z);
+}
+
+.perspective(@perspective) {
+  -webkit-perspective: @perspective; 
+     -moz-perspective: @perspective; 
+       -o-perspective: @perspective; 
+          perspective: @perspective;   
+}
+
+#viewport {
+  z-index: 50;
+  position: absolute;
+  left: 0;
+  top: 100px;
+  overflow: hidden;
+  width: 100%;
+  height: 100%;
+}
+
+#cube {
+  .perspective(500px);
+  .translate(100px, 200px);
+}
+
+.face {
+  position: absolute;
+  top: 0;
+  left: 0;
+  .background rect { 
+    fill-opacity: 0.5;
+    fill:@faceColor;
+  }
+  .corners polygon, .cross polygon {
+    fill:@lineColor;
+  }
+  .corners polygon.tl {
+    fill:@tlColor;
+  }
+  &.floor {
+    .setTransform(-90deg, 0, 0, 0, 0, 0);
+  }
+  &.left {
+    .setTransform(0, -90deg, 0, 0, 0, 0);
+    // display: none;
+  }
+  &.back {
+    // .setTransform(30deg, 0, 0, 0, 0, 0);
+    display: none;
+  }
+  &.right {
+    // .setTransform(40deg, 0, 0, 0, 0, 0);
+    display: none;
+  }
+  &.front {
+    // .setTransform(50deg, 0, 0, 0, 0, 0);
+    display: none;
+  }
+}

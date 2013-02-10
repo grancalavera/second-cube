@@ -1,0 +1,18 @@
+.debugBorder(@debugColor) {
+  border: 1px solid @debugColor;
+}
+
+.debug(@debugColor) {
+  .debugBorder(@debugColor);
+  background-color: fade(@debugColor, 50%)
+}
+
+body.debug {
+  #viewport {
+    .debug(@red);
+    margin: 5px;
+    padding: 5px;
+  }
+}
+
+
