@@ -2,26 +2,22 @@
 define(function(require) {
     'use strict';
     var $ = require('jquery'),
-        doc = $(document),
-        cube = require('app/cube'),
+        faces = require('app/face-stream'),
+        tmpl = require('templates')['cube-face'],
+        ctx = require('app/rendering-context')(150),
         $cube = $('#cube')
 
-
     var init = function () {
-      var cubeFace = cube(150)
-      $cube.append(cubeFace())
-      $cube.append(cubeFace.next())
-      $cube.append(cubeFace.next().next())
-      $cube.append(cubeFace.next().next().next())
-      $cube.append(cubeFace.next().next().next().next())
+      var firstFace = faces(tmpl, ctx)
+      $cube.append(firstFace())
+      $cube.append(firstFace.next())
+      $cube.append(firstFace.next().next())
+      $cube.append(firstFace.next().next().next())
+      $cube.append(firstFace.next().next().next().next())
     }
 
     $(function () {
       init()
     })
 
-    return {
-      title: 'Second Cube',
-      doc: doc
-    };
 });
