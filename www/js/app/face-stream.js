@@ -1,4 +1,4 @@
-// Renders all the faces of the cube
+// Provides an infinite stream of cube faces
 // leoncoto@gmail.com
 define(function (require) {
     'use strict';
