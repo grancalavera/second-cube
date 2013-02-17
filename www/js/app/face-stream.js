@@ -3,15 +3,23 @@
 define(function (require) {
     'use strict';
     var _ = require('lodash')
-    
+
     var faceMaker = function (position, next) {
       return function (template, context) {
         context = _.extend({}, context, {position: position})
+
         var make = function() {
+          return render()
+        }
+        var render = function () {
           return template(context)
         }
+
         make.next = function () {
           return next(template, context)
+        }
+        make.render = function () {
+          return render ()
         }
         return make
       }

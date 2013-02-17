@@ -10,10 +10,10 @@
 }
 
 .perspective(@perspective) {
-  -webkit-perspective: @perspective; 
-     -moz-perspective: @perspective; 
-       -o-perspective: @perspective; 
-          perspective: @perspective;   
+  -webkit-perspective: @perspective;
+     -moz-perspective: @perspective;
+       -o-perspective: @perspective;
+          perspective: @perspective;
 }
 
 #viewport {
@@ -26,17 +26,9 @@
   height: 100%;
 }
 
-// #cube {
-//   .perspective(500px);
-//   .translate(100px, 200px);
-// }
-
 .face {
-  // position: absolute;
-  // top: 0;
-  // left: 0;
   margin:10px;
-  .background rect { 
+  .background rect {
     fill-opacity: 0.5;
     fill:@faceColor;
   }
@@ -46,23 +38,4 @@
   .corners polygon.tl {
     fill:@tlColor;
   }
-  // &.floor {
-  //   .setTransform(-90deg, 0, 0, 0, 0, 0);
-  // }
-  // &.left {
-  //   .setTransform(0, -90deg, 0, 0, 0, 0);
-  //   // display: none;
-  // }
-  // &.back {
-  //   // .setTransform(30deg, 0, 0, 0, 0, 0);
-  //   display: none;
-  // }
-  // &.right {
-  //   // .setTransform(40deg, 0, 0, 0, 0, 0);
-  //   display: none;
-  // }
-  // &.front {
-  //   // .setTransform(50deg, 0, 0, 0, 0, 0);
-  //   display: none;
-  // }
 }

@@ -9,11 +9,11 @@ define(function(require) {
 
     var init = function () {
       var firstFace = faces(tmpl, ctx)
-      $cube.append(firstFace())
-      $cube.append(firstFace.next())
-      $cube.append(firstFace.next().next())
-      $cube.append(firstFace.next().next().next())
-      $cube.append(firstFace.next().next().next().next())
+      $cube.append(firstFace.render())
+      $cube.append(firstFace.next().render())
+      $cube.append(firstFace.next().next().render())
+      $cube.append(firstFace.next().next().next().render())
+      $cube.append(firstFace.next().next().next().next().render())
     }
 
     $(function () {
