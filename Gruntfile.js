@@ -38,6 +38,13 @@ module.exports = function(grunt) {
         files: {
           'www/css/main.css': 'www/less/main.less'
         }
+      },
+      prototype: {
+        options: {
+        },
+        files: {
+          'www/css/prototype.css': 'www/less/prototype.less'
+        }
       }
     },
     qunit: {
@@ -58,10 +65,10 @@ module.exports = function(grunt) {
       },
       less: {
         files: ['www/less/**/*.less'],
-        tasks: ['less:dev', 'reload']
+        tasks: ['less:dev', 'less:prototype', 'reload']
       },
-      index: {
-        files: ['www/index.html'],
+      html: {
+        files: ['www/*.html'],
         tasks: ['reload']
       },
       templates: {

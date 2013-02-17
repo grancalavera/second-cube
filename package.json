@@ -44,7 +44,8 @@
       "require": "github:jrburke/requirejs/2.1.2",
       "bootstrap": "github:twitter/bootstrap/v2.3.0",
       "handlebars": "https://github.com/downloads/wycats/handlebars.js/handlebars-1.0.rc.1.js",
-      "lodash": "github:bestiejs/lodash/v0.10.0"
+      "lodash": "github:bestiejs/lodash/v0.10.0",
+      "prefixfree": "github:LeaVerou/prefixfree/gh-pages"
     }
   }
 }
