@@ -1,41 +1,115 @@
 @faceColor: @black;
 @lineColor: @white;
-@tlColor: @yellow;
+@size: 150px;
+@halfSize: @size / 2;
+@perspective: 600px;
+@animationDuration: 3s;
 
-.setTransform(@rx, @ry, @rz, @x, @y, @z) {
-  -webkit-transform: rotateX(@rx) rotateY(@ry) rotateZ(@rz) translate3d(@x, @y, @z);
-     -moz-transform: rotateX(@rx) rotateY(@ry) rotateZ(@rz) translate3d(@x, @y, @z);
-       -o-transform: rotateX(@rx) rotateY(@ry) rotateZ(@rz) translate3d(@x, @y, @z);
-          transform: rotateX(@rx) rotateY(@ry) rotateZ(@rz) translate3d(@x, @y, @z);
-}
-
-.perspective(@perspective) {
-  -webkit-perspective: @perspective;
-     -moz-perspective: @perspective;
-       -o-perspective: @perspective;
-          perspective: @perspective;
+.hCenter (@theWidth) {
+  left: 50%;
+  margin-left: -@theWidth / 2;
 }
 
 #viewport {
-  z-index: 50;
   position: absolute;
   left: 0;
-  top: 100px;
-  overflow: hidden;
+  top: 0;
   width: 100%;
   height: 100%;
+  overflow: hidden;
+  perspective: @perspective;
+}
+
+#cubes {
+  transform-style: preserve-3d;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  perspective-origin:50% 50%;
+  transform: translate3d(0px, @halfSize, 0px) rotateX(0deg) rotateY(45deg) rotateZ(0deg);
+}
+
+.trans-floor {
+  transform: translate3d(0px, @size, @halfSize) rotateX(-90deg) rotateY(0deg) rotateZ(0deg);
+}
+
+.trans-left {
+  transform: translate3d(0, 0, 0) rotateX(-90deg) rotateY(90deg) rotateZ(0deg);
+}
+
+.trans-back {
+
+}
+
+.trans-right {
+
+}
+
+.trans-front {
+  transform: translate3d(0px, 0px, @halfSize) rotateX(0deg) rotateY(0deg) rotateZ(0deg);
 }
 
 .face {
-  margin:10px;
+  position:absolute;
+  bottom: @size;
+  .hCenter(@size);
   .background rect {
-    fill-opacity: 0.5;
+    fill-opacity: 0.6;
     fill:@faceColor;
   }
   .corners polygon, .cross polygon {
     fill:@lineColor;
   }
-  .corners polygon.tl {
-    fill:@tlColor;
+  &.floor {
+    .trans-floor;
+    animation-name: floor-in;
+    animation-duration: @animationDuration;
+    transform-origin: 0 0;
+  }
+  &.left {
+    transform: translate3d(0px, @halfSize, 0px) rotateX(-90deg) rotateY(0deg) rotateZ(0deg);
+    // animation-duration: @animationDuration;
+    // animation-name: left-in;
+    // animation-delay: @animationDuration;
+    // animation-fill-mode: forwards;
+    // transform-origin: 0 @size; // FTW!
+    display: none;
+  }
+  &.back {
+    .trans-back;
+    display: none;
+  }
+  &.right {
+    .trans-right;
+    display: none;
+  }
+  &.front {
+    .trans-front;
+    display: none;
+  }
+}
+
+@keyframes floor-in {
+  from {
+    transform: translate3d(0px, @size, @halfSize) rotateX(0deg) rotateY(0deg) rotateZ(0deg);
+  }
+  to {
+    .trans-floor;
+  }
+}
+
+@keyframes left-in {
+  0% {
+    visibility: hidden;
+    .trans-floor;
+  }
+  1% {
+    visibility: visible;
+    .trans-floor;
+  }
+  100% {
+    visibility: visible;
+    .trans-left;
   }
 }
