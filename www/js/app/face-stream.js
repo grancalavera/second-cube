@@ -15,7 +15,8 @@ define(function (require) {
           return template(context)
         }
 
-        make.next = function () {
+        make.next = function (bottom) {
+          context.bottom = bottom
           return next(template, context)
         }
         make.render = function () {

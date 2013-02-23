@@ -5,7 +5,7 @@
 @size: 150px;
 @halfSize: @size / 2;
 @perspective: 600px;
-@duration: 0.4s;
+@duration: 0.5s;
 
 
 // Utils
@@ -65,121 +65,102 @@
 
 // Animations
 
-.floor-from {
+.from(floor) {
   transform: translateY(@size) translateZ(@halfSize);
 }
 
-.floor-to {
+.to(floor) {
   transform: translateY(@size) translateZ(@halfSize) rotateX(-90deg);
 }
 
-.left-from {
+.from(left) {
   transform: translateX(-@halfSize) rotateY(-90deg) rotateX(90deg);
 }
 
-.left-to {
+.to(left) {
   transform: translateX(-@halfSize) rotateY(-90deg) rotateX(0deg);
 }
 
-.back-from {
+.from(back) {
   transform: translateX(-@size) translateZ(-@halfSize) rotateY(90deg);
 }
 
-.back-to {
+.to(back) {
   transform: translateX(-@size) translateZ(-@halfSize) rotateY(180deg);
 }
 
-.right-from {
+.from(right) {
   transform: translateZ(-@halfSize);
 }
 
-.right-to {
+.to(right) {
   transform: translateZ(-@halfSize) rotateY(90deg);
 }
 
-.front-from {
+.from(front) {
   transform: translateZ(@halfSize) rotateY(-90deg);
 }
 
-.front-to {
+.to(front) {
   transform: translateZ(@halfSize) rotateY(0deg);
 }
 
 .face {
   &.floor {
-    .floor-from;
+    .from(floor);
     transform-origin: 0 0;
     animation-name: floor-animation;
   }
   &.left {
-    .left-from;
+    .from(left);
     transform-origin: @halfSize @size;
     animation-name: left-animation;
-    animation-delay: @duration;
   }
   &.back {
-    .back-from;
+    .from(back);
     transform-origin: @size 0;
     animation-name: back-animation;
-    animation-delay: @duration * 2;
   }
   &.right {
-    .right-from;
+    .from(right);
     transform-origin: @size 0;
     animation-name: right-animation;
-    animation-delay: @duration * 3;
   }
   &.front {
-    .front-from;
+    .from(front);
     transform-origin: @size 0;
     animation-name: front-animation;
-    animation-delay: @duration * 4;
   }
 }
+
 
 // Keyframes
 
-@keyframes floor-animation {
+.keyframes (@face) {
   from {
-    .floor-from;
+    .from(@face);
   }
   to {
-    .floor-to;
+    .to(@face);
   }
+}
+
+@keyframes floor-animation {
+  .keyframes (floor);
 }
 
 @keyframes left-animation {
-  from {
-    .left-from;
-  }
-  to {
-    .left-to;
-  }
+  .keyframes (left);
 }
 
 @keyframes back-animation {
-  from {
-    .back-from;
-  }
-  to {
-    .back-to;
-  }
+  .keyframes (back);
 }
 
 @keyframes right-animation {
-  from {
-    .right-from;
-  }
-  to {
-    .right-to;
-  }
+  .keyframes (right);
 }
 
 @keyframes front-animation {
-  from {
-    .front-from;
-  }
-  to {
-    .front-to;
-  }
+  .keyframes (front);
 }
