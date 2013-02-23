@@ -1,14 +1,33 @@
+// Configuration
+
 @faceColor: @black;
 @lineColor: @white;
 @size: 150px;
 @halfSize: @size / 2;
 @perspective: 600px;
-@animationDuration: 3s;
+@duration: 0.4s;
+
+
+// Utils
 
 .hCenter (@theWidth) {
   left: 50%;
   margin-left: -@theWidth / 2;
 }
+
+.red {
+  .corners polygon, .cross polygon {
+    fill: @red;
+  }
+}
+
+.animation-defaults {
+  animation-duration: @duration;
+  animation-fill-mode: forwards;
+}
+
+
+// Structure
 
 #viewport {
   position: absolute;
@@ -30,86 +49,137 @@
   transform: translate3d(0px, @halfSize, 0px) rotateX(0deg) rotateY(45deg) rotateZ(0deg);
 }
 
-.trans-floor {
-  transform: translate3d(0px, @size, @halfSize) rotateX(-90deg) rotateY(0deg) rotateZ(0deg);
-}
-
-.trans-left {
-  transform: translate3d(0, 0, 0) rotateX(-90deg) rotateY(90deg) rotateZ(0deg);
-}
-
-.trans-back {
-
-}
-
-.trans-right {
-
-}
-
-.trans-front {
-  transform: translate3d(0px, 0px, @halfSize) rotateX(0deg) rotateY(0deg) rotateZ(0deg);
-}
-
 .face {
   position:absolute;
+  .animation-defaults;
   bottom: @size;
   .hCenter(@size);
   .background rect {
-    fill-opacity: 0.6;
+    fill-opacity: 0.8;
     fill:@faceColor;
   }
   .corners polygon, .cross polygon {
     fill:@lineColor;
   }
+}
+
+// Animations
+
+.floor-from {
+  transform: translateY(@size) translateZ(@halfSize);
+}
+
+.floor-to {
+  transform: translateY(@size) translateZ(@halfSize) rotateX(-90deg);
+}
+
+.left-from {
+  transform: translateX(-@halfSize) rotateY(-90deg) rotateX(90deg);
+}
+
+.left-to {
+  transform: translateX(-@halfSize) rotateY(-90deg) rotateX(0deg);
+}
+
+.back-from {
+  transform: translateX(-@size) translateZ(-@halfSize) rotateY(90deg);
+}
+
+.back-to {
+  transform: translateX(-@size) translateZ(-@halfSize) rotateY(180deg);
+}
+
+.right-from {
+  transform: translateZ(-@halfSize);
+}
+
+.right-to {
+  transform: translateZ(-@halfSize) rotateY(90deg);
+}
+
+.front-from {
+  transform: translateZ(@halfSize) rotateY(-90deg);
+}
+
+.front-to {
+  transform: translateZ(@halfSize) rotateY(0deg);
+}
+
+.face {
   &.floor {
-    .trans-floor;
-    animation-name: floor-in;
-    animation-duration: @animationDuration;
+    .floor-from;
     transform-origin: 0 0;
+    animation-name: floor-animation;
   }
   &.left {
-    transform: translate3d(0px, @halfSize, 0px) rotateX(-90deg) rotateY(0deg) rotateZ(0deg);
-    // animation-duration: @animationDuration;
-    // animation-name: left-in;
-    // animation-delay: @animationDuration;
-    // animation-fill-mode: forwards;
-    // transform-origin: 0 @size; // FTW!
-    display: none;
+    .left-from;
+    transform-origin: @halfSize @size;
+    animation-name: left-animation;
+    animation-delay: @duration;
   }
   &.back {
-    .trans-back;
-    display: none;
+    .back-from;
+    transform-origin: @size 0;
+    animation-name: back-animation;
+    animation-delay: @duration * 2;
   }
   &.right {
-    .trans-right;
-    display: none;
+    .right-from;
+    transform-origin: @size 0;
+    animation-name: right-animation;
+    animation-delay: @duration * 3;
   }
   &.front {
-    .trans-front;
-    display: none;
+    .front-from;
+    transform-origin: @size 0;
+    animation-name: front-animation;
+    animation-delay: @duration * 4;
   }
 }
 
-@keyframes floor-in {
+// Keyframes
+
+@keyframes floor-animation {
   from {
-    transform: translate3d(0px, @size, @halfSize) rotateX(0deg) rotateY(0deg) rotateZ(0deg);
+    .floor-from;
   }
   to {
-    .trans-floor;
+    .floor-to;
   }
 }
 
-@keyframes left-in {
-  0% {
-    visibility: hidden;
-    .trans-floor;
+@keyframes left-animation {
+  from {
+    .left-from;
   }
-  1% {
-    visibility: visible;
-    .trans-floor;
+  to {
+    .left-to;
   }
-  100% {
-    visibility: visible;
-    .trans-left;
+}
+
+@keyframes back-animation {
+  from {
+    .back-from;
+  }
+  to {
+    .back-to;
+  }
+}
+
+@keyframes right-animation {
+  from {
+    .right-from;
+  }
+  to {
+    .right-to;
+  }
+}
+
+@keyframes front-animation {
+  from {
+    .front-from;
+  }
+  to {
+    .front-to;
   }
 }

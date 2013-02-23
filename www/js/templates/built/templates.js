@@ -5,7 +5,7 @@ this["JST"]["cube-face"] = Handlebars.template(function (Handlebars,depth0,helpe
   var buffer = "", stack1, foundHelper, functionType="function", escapeExpression=this.escapeExpression;
 
 
-  buffer += "<!DOCTYPE svg PUBLIC \"-//W3C//DTD SVG 1.1//EN\" \"http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd\">\n<svg \n  version=\"1.1\" \n  xmlns=\"http://www.w3.org/2000/svg\" \n  xmlns:xlink=\"http://www.w3.org/1999/xlink\" \n  x=\"0px\" y=\"0px\" \n  width=\"";
+  buffer += "<!DOCTYPE svg PUBLIC \"-//W3C//DTD SVG 1.1//EN\" \"http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd\">\n<svg\n  version=\"1.1\"\n  xmlns=\"http://www.w3.org/2000/svg\"\n  xmlns:xlink=\"http://www.w3.org/1999/xlink\"\n  x=\"0px\" y=\"0px\"\n  width=\"";
   foundHelper = helpers.size;
   if (foundHelper) { stack1 = foundHelper.call(depth0, {hash:{},data:data}); }
   else { stack1 = depth0.size; stack1 = typeof stack1 === functionType ? stack1.apply(depth0) : stack1; }
@@ -13,7 +13,7 @@ this["JST"]["cube-face"] = Handlebars.template(function (Handlebars,depth0,helpe
   foundHelper = helpers.size;
   if (foundHelper) { stack1 = foundHelper.call(depth0, {hash:{},data:data}); }
   else { stack1 = depth0.size; stack1 = typeof stack1 === functionType ? stack1.apply(depth0) : stack1; }
-  buffer += escapeExpression(stack1) + "px\" \n  viewBox=\"0 0 ";
+  buffer += escapeExpression(stack1) + "px\"\n  viewBox=\"0 0 ";
   foundHelper = helpers.size;
   if (foundHelper) { stack1 = foundHelper.call(depth0, {hash:{},data:data}); }
   else { stack1 = depth0.size; stack1 = typeof stack1 === functionType ? stack1.apply(depth0) : stack1; }
@@ -21,7 +21,7 @@ this["JST"]["cube-face"] = Handlebars.template(function (Handlebars,depth0,helpe
   foundHelper = helpers.size;
   if (foundHelper) { stack1 = foundHelper.call(depth0, {hash:{},data:data}); }
   else { stack1 = depth0.size; stack1 = typeof stack1 === functionType ? stack1.apply(depth0) : stack1; }
-  buffer += escapeExpression(stack1) + "\" \n  class=\"face ";
+  buffer += escapeExpression(stack1) + "\"\n  class=\"face ";
   foundHelper = helpers.position;
   if (foundHelper) { stack1 = foundHelper.call(depth0, {hash:{},data:data}); }
   else { stack1 = depth0.position; stack1 = typeof stack1 === functionType ? stack1.apply(depth0) : stack1; }
