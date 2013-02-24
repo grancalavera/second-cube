@@ -35,7 +35,8 @@
     "grunt-contrib-jshint": "~0.1.1rc6",
     "grunt-contrib-watch": "git://github.com/jamie-stackhouse/grunt-contrib-watch.git",
     "grunt-contrib-requirejs": "0.4.0rc7",
-    "grunt-contrib-handlebars": "~0.5.4rc7"
+    "grunt-contrib-handlebars": "~0.5.4rc7",
+    "grunt-contrib-copy": "~0.4.0"
   },
   "volo": {
     "baseUrl": "www/js/lib",

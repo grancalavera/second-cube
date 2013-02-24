@@ -101,6 +101,30 @@ module.exports = function(grunt) {
           port: 8080,
           base: 'www'
         }
+      },
+      build: {
+        options: {
+          port: 8080,
+          base: '../second-cube-built/www-built'
+        }
+      }
+    },
+    copy: {
+      gh_pages: {
+        files: [
+          {
+            cwd: '.',
+            src: [
+              'www-built/index.html',
+              'www-built/css/main.css',
+              'www-built/js/main.js',
+              'www-built/js/app/second-cube.js',
+              'www-built/js/lib/require.js',
+              'www-built/js/lib/prefixfree.js'
+            ],
+            dest: '../second-cube-built/'
+          }
+        ]
       }
     },
 
@@ -136,10 +160,11 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-requirejs')
   grunt.loadNpmTasks('grunt-contrib-watch')
   grunt.loadNpmTasks('grunt-reload')
+  grunt.loadNpmTasks('grunt-contrib-copy')
 
   grunt.registerTask('dev_build', ['less', 'jshint', 'handlebars', 'qunit'])
   grunt.registerTask('dev_server', ['connect:dev', 'reload', 'watch'])
   grunt.registerTask('default', ['dev_build', 'dev_server'])
-  grunt.registerTask('build', ['dev_build', 'requirejs:production'])
+  grunt.registerTask('build', ['dev_build', 'requirejs:production', 'copy:gh_pages', 'connect:build', 'reload', 'watch'])
 
 };

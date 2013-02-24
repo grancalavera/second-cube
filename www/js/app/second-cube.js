@@ -1,4 +1,8 @@
 /* jshint devel:true */
+/*!
+ * second-cube.js
+ * leoncoto@gmail.com
+ */
 define(function(require) {
     'use strict';
     var $ = require('jquery'),

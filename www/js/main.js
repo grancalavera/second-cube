@@ -33,6 +33,4 @@
   });
 
   requirejs(['app/second-cube'])
-  requirejs(['app/prototype'])
-
 })();
