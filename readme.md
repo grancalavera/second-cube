@@ -8,7 +8,11 @@ An experiment on infinite sequences and CSS animations.
     - grunt-cli ~0.1.6
     - volo ~0.2.7
 
+All the development and runtime dependencies are handled by [Grunt](http://gruntjs.com/) and [Volo](http://volojs.org/)
+
 ## Infinite sequences
+
+**Source: [face-stream.js](https://github.com/grancalavera/second-cube/blob/master/www/js/app/face-stream.js)**
 
 The faces of the cube are represented by an infinite object sequence, which
 contains five diferent objects:
@@ -25,6 +29,8 @@ the class name that will be assigned to the rendered DOM element, which is used
 as a CSS hook for animation and syling.
 
 ## CSS animations and transitions
+
+**Source: [cube.less](https://github.com/grancalavera/second-cube/blob/master/www/less/cube.less)**
 
 Since each face of the cube represents a known state, it is possible to create
 specific animation for each face. Every animation will run only once, and is
