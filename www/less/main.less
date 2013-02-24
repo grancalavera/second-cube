@@ -1,16 +1,22 @@
 @import '../js/lib/bootstrap/less/bootstrap';
-
+@import 'cube';
 @bodyBackground: @black;
 @textColor: @grayLighter;
-
-* {
-  .box-sizing(border-box);
-}
+@linkColor: @grayLight;
 
 header {
-  z-index: 100;
+  margin: 30px;
   position: relative;
+  z-index: 100;
+  max-width: 270px;
 }
 
-@import 'debug';
-@import 'cube';
+@media (max-width: 570px) {
+  header {
+    margin: 15px;
+    max-width: 160px;
+  }
+  #cubes {
+    transform: translate3d(0, 0, -500px) rotateY(45deg);
+  }
+}

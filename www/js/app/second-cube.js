@@ -26,7 +26,7 @@ define(function(require) {
     var moveTower = function () {
       var distance = size / 5
       var css = 'translateY(' + (distance * count) + 'px)'
-      $tower.css('-webkit-transform', css)
+      $tower.css('transform', css)
     }
 
     var cleanupOldLevels = function () {
@@ -54,7 +54,7 @@ define(function(require) {
       face = face.next(level)
     }
 
-    $cubes.on('webkitAnimationEnd', function () {
+    $cubes.bind('webkitAnimationEnd animationend', function () {
       appendFace()
     })
 
