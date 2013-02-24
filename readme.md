@@ -8,7 +8,7 @@ An experiment on infinite sequences and CSS animations.
     - grunt-cli ~0.1.6
     - volo ~0.2.7
 
-All the development and runtime dependencies are handled by [Grunt](http://gruntjs.com/) and [Volo](http://volojs.org/)
+All the development and runtime dependencies are handled by [Grunt](http://gruntjs.com/) and [Volo](http://volojs.org/).
 
 ## Infinite sequences
 
