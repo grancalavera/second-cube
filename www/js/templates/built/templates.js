@@ -29,7 +29,11 @@ this["JST"]["cube-face"] = Handlebars.template(function (Handlebars,depth0,helpe
   foundHelper = helpers.bottom;
   if (foundHelper) { stack1 = foundHelper.call(depth0, {hash:{},data:data}); }
   else { stack1 = depth0.bottom; stack1 = typeof stack1 === functionType ? stack1.apply(depth0) : stack1; }
-  buffer += escapeExpression(stack1) + "px;\"\n  >\n<g class=\"background\">\n  <rect width=\"";
+  buffer += escapeExpression(stack1) + "px;\"\n  id=\"";
+  foundHelper = helpers.id;
+  if (foundHelper) { stack1 = foundHelper.call(depth0, {hash:{},data:data}); }
+  else { stack1 = depth0.id; stack1 = typeof stack1 === functionType ? stack1.apply(depth0) : stack1; }
+  buffer += escapeExpression(stack1) + "\"\n  >\n<g class=\"background\">\n  <rect width=\"";
   foundHelper = helpers.size;
   if (foundHelper) { stack1 = foundHelper.call(depth0, {hash:{},data:data}); }
   else { stack1 = depth0.size; stack1 = typeof stack1 === functionType ? stack1.apply(depth0) : stack1; }

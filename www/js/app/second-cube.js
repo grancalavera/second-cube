@@ -2,34 +2,61 @@
 define(function(require) {
     'use strict';
     var $ = require('jquery'),
-        size = 150,
+        _ = require('lodash'),
         faces = require('app/face-stream'),
+        ctx = require('app/rendering-context'),
         tmpl = require('templates')['cube-face'],
-        ctx = require('app/rendering-context')(size),
-        $cubes = $('#cubes'),
-        face = faces(tmpl, ctx),
-        render = face.render(),
-        limit = 25,
-        count = 0,
-        level = 1,
-        bottom = level * size
 
+        $tower = $('#tower'),
+        $cubes = $('#cubes'),
+
+        size = 200,
+        limit = 40,
+        count = 0,
+        level = 0,
+        levels = [[]],
+        maxLevels = 4,
+
+        face, render
+
+
+    ctx = ctx(size)
+    face = faces(tmpl, ctx, 0)
+
+    var moveTower = function () {
+      var distance = size / 5
+      var css = 'translateY(' + (distance * count) + 'px)'
+      $tower.css('-webkit-transform', css)
+    }
+
+    var cleanupOldLevels = function () {
+      if (levels.length > maxLevels) {
+        var first = levels.shift().join(',')
+        $(first).remove()
+      }
+    }
+
+    var updateLevels = function () {
+      var l = Math.floor(count / 5)
+      if (l !== level) {
+        level = l
+        levels.push([])
+        cleanupOldLevels()
+      }
+    }
+
+    var appendFace = function () {
+      $cubes.append(face.render())
+      levels[levels.length - 1].push('#' + face.id())
+      count ++
+      updateLevels()
+      moveTower()
+      face = face.next(level)
+    }
 
     $cubes.on('webkitAnimationEnd', function () {
       appendFace()
     })
-
-
-    var appendFace = function () {
-      if (count >= limit) {
-        return
-      }
-      $cubes.append(render)
-      count ++
-      level = Math.floor(count / 5) + 1
-      face = face.next(level * size)
-      render = face.render()
-    }
 
     var init = function () {
       appendFace()

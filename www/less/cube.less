@@ -2,10 +2,11 @@
 
 @faceColor: @black;
 @lineColor: @white;
-@size: 150px;
+@size: 200px;
 @halfSize: @size / 2;
-@perspective: 600px;
-@duration: 0.5s;
+@perspective: 500px;
+@duration: 0.4s;
+@opacity: 0.6;
 
 
 // Utils
@@ -24,6 +25,7 @@
 .animation-defaults {
   animation-duration: @duration;
   animation-fill-mode: forwards;
+  animation-timing-function: linear;
 }
 
 
@@ -35,8 +37,16 @@
   top: 0;
   width: 100%;
   height: 100%;
-  overflow: hidden;
   perspective: @perspective;
+}
+
+#tower {
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  transition: transform @duration * 5 linear;
+  transform-style: preserve-3d;
 }
 
 #cubes {
@@ -45,17 +55,17 @@
   height: 100%;
   top: 0;
   left: 0;
-  perspective-origin:50% 50%;
-  transform: translate3d(0px, @halfSize, 0px) rotateX(0deg) rotateY(45deg) rotateZ(0deg);
+  perspective-origin:50% 100%;
+  transform: translate3d(0, -@halfSize, -300px) rotateY(45deg);
 }
 
 .face {
   position:absolute;
   .animation-defaults;
-  bottom: @size;
+  bottom: 0;
   .hCenter(@size);
   .background rect {
-    fill-opacity: 0.8;
+    fill-opacity: @opacity;
     fill:@faceColor;
   }
   .corners polygon, .cross polygon {
