@@ -165,6 +165,6 @@ module.exports = function(grunt) {
   grunt.registerTask('dev_build', ['less', 'jshint', 'handlebars', 'qunit'])
   grunt.registerTask('dev_server', ['connect:dev', 'reload', 'watch'])
   grunt.registerTask('default', ['dev_build', 'dev_server'])
-  grunt.registerTask('build', ['dev_build', 'requirejs:production', 'copy:gh_pages', 'connect:build', 'reload', 'watch'])
+  grunt.registerTask('build', ['dev_build', 'requirejs:production', 'copy:gh_pages'])
 
 };
