@@ -3,3 +3,4 @@ node_modules
 www/js/lib
 www/css
 www-built
+BrowserStackTunnel.jar
