@@ -1,0 +1,21 @@
+{
+  "name": "second-cube",
+  "version": "0.0.0",
+  "homepage": "https://github.com/grancalavera/second-cube",
+  "authors": [
+    "Leon Coto <leoncoto@gmail.com>"
+  ],
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jquery": "~2.0.3",
+    "lodash": "~2.4.1"
+  }
+}

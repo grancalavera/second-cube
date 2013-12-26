@@ -26,27 +26,13 @@
     "node": ">=0.8.14"
   },
   "devDependencies": {
-    "grunt-contrib-qunit": "~0.1.1rc6",
-    "grunt-contrib-less": "~0.5.0rc7",
-    "grunt-contrib-connect": "~0.1.1rc6",
-    "grunt-reload": "git://github.com/webxl/grunt-reload.git",
-    "volo": "~0.2.6",
-    "grunt": "~0.4.0rc7",
-    "grunt-contrib-jshint": "~0.1.1rc6",
-    "grunt-contrib-watch": "git://github.com/jamie-stackhouse/grunt-contrib-watch.git",
-    "grunt-contrib-requirejs": "0.4.0rc7",
-    "grunt-contrib-handlebars": "~0.5.4rc7",
-    "grunt-contrib-copy": "~0.4.0"
-  },
-  "volo": {
-    "baseUrl": "www/js/lib",
-    "dependencies": {
-      "jquery": "github:jquery/jquery/1.9.1",
-      "require": "github:jrburke/requirejs/2.1.2",
-      "bootstrap": "github:twitter/bootstrap/v2.3.0",
-      "handlebars": "https://github.com/downloads/wycats/handlebars.js/handlebars-1.0.rc.1.js",
-      "lodash": "github:bestiejs/lodash/v0.10.0",
-      "prefixfree": "github:LeaVerou/prefixfree/gh-pages"
-    }
+    "grunt-contrib-copy": "~0.5.0",
+    "grunt-contrib-watch": "~0.5.3",
+    "grunt-contrib-connect": "~0.5.0",
+    "grunt": "~0.4.2",
+    "grunt-contrib-jshint": "~0.8.0",
+    "grunt-contrib-less": "~0.8.3",
+    "grunt-autoprefixer": "~0.6.0",
+    "matchdep": "~0.3.0"
   }
 }

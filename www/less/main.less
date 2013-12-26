@@ -1,8 +1,16 @@
-@import '../js/lib/bootstrap/less/bootstrap';
-@import 'cube';
-@bodyBackground: @black;
-@textColor: @grayLighter;
-@linkColor: @grayLight;
+body {
+  background-color: black;
+  color: #cccccc;
+  font-family: Helvetica, sans-serif;
+}
+
+a {
+  color:#666666;
+  text-decoration: none;
+  &:hover {
+    text-decoration: underline;
+  }
+}
 
 header {
   margin: 30px;
@@ -19,4 +27,164 @@ header {
   #cubes {
     transform: translate3d(0, 0, -500px) rotateY(45deg);
   }
+}
+
+// Configuration
+
+@faceColor: black;
+@lineColor: white;
+@size: 200px;
+@halfSize: @size / 2;
+@perspective: 500px;
+@duration: 0.5s;
+@opacity: 0.7;
+
+// Structure
+
+#viewport {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  perspective: @perspective;
+  overflow: hidden;
+}
+
+#tower {
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  transition: transform @duration * 5 linear;
+  transform-style: preserve-3d;
+}
+
+#cubes {
+  transform-style: preserve-3d;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  perspective-origin:50% 100%;
+  transform: translate3d(0, -@halfSize, -300px) rotateY(45deg);
+}
+
+.face {
+  position:absolute;
+  animation-duration: @duration;
+  animation-fill-mode: forwards;
+  animation-timing-function: linear;
+  bottom: 0;
+  left: 50%;
+  margin-left: -@halfSize;
+  .background rect {
+    fill-opacity: @opacity;
+    fill:@faceColor;
+  }
+  .corners polygon, .cross polygon {
+    fill:@lineColor;
+  }
+}
+
+// Animations
+
+.from(floor) {
+  transform: translateY(@size) translateZ(@halfSize);
+}
+
+.to(floor) {
+  transform: translateY(@size) translateZ(@halfSize) rotateX(-90deg);
+}
+
+.from(left) {
+  transform: translateX(-@halfSize) rotateY(-90deg) rotateX(90deg);
+}
+
+.to(left) {
+  transform: translateX(-@halfSize) rotateY(-90deg) rotateX(0deg);
+}
+
+.from(back) {
+  transform: translateX(-@size) translateZ(-@halfSize) rotateY(90deg);
+}
+
+.to(back) {
+  transform: translateX(-@size) translateZ(-@halfSize) rotateY(180deg);
+}
+
+.from(right) {
+  transform: translateZ(-@halfSize);
+}
+
+.to(right) {
+  transform: translateZ(-@halfSize) rotateY(90deg);
+}
+
+.from(front) {
+  transform: translateZ(@halfSize) rotateY(-90deg);
+}
+
+.to(front) {
+  transform: translateZ(@halfSize) rotateY(0deg);
+}
+
+.face {
+  &.floor {
+    .from(floor);
+    transform-origin: 0 0;
+    animation-name: floor-animation;
+  }
+  &.left {
+    .from(left);
+    transform-origin: @halfSize @size;
+    animation-name: left-animation;
+  }
+  &.back {
+    .from(back);
+    transform-origin: @size 0;
+    animation-name: back-animation;
+  }
+  &.right {
+    .from(right);
+    transform-origin: @size 0;
+    animation-name: right-animation;
+  }
+  &.front {
+    .from(front);
+    transform-origin: @size 0;
+    animation-name: front-animation;
+  }
+}
+
+
+// Keyframes
+
+.keyframes (@face) {
+  from {
+    .from(@face);
+  }
+  to {
+    .to(@face);
+  }
+}
+
+@keyframes floor-animation {
+  .keyframes (floor);
+}
+
+@keyframes left-animation {
+  .keyframes (left);
+}
+
+@keyframes back-animation {
+  .keyframes (back);
+}
+
+@keyframes right-animation {
+  .keyframes (right);
+}
+
+@keyframes front-animation {
+  .keyframes (front);
 }

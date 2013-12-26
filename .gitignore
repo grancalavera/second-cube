@@ -4,3 +4,5 @@ www/js/lib
 www/css
 www-built
 BrowserStackTunnel.jar
+*.sublime-workspace
+bower_components

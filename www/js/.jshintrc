@@ -17,7 +17,9 @@
     "jQuery",
     "define",
     "require",
-    "requirejs"
+    "requirejs",
+    "_",
+    "$"
   ]
 }
 
